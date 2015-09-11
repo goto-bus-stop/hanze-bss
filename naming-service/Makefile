@@ -9,9 +9,11 @@
 all: build
 
 # Building source
-build:
-	javac -d bin -sourcepath src src/Main.java
+build-server:
+	javac -d bin -sourcepath src src/ns/Server/Server.java
 
-# Ensures stuff is built before running it
-run: build
-	java -classpath bin Main
+# Building source
+build-client:
+	javac -d bin -sourcepath src src/ns/Client/Client.java
+
+build: build-server build-client
