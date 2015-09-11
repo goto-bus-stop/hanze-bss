@@ -97,10 +97,10 @@ public class Client {
                 "No domain name given. Usage: ./client [domain name]");
             return;
         }
-        String domain = args[0];
-        System.out.println("Looking up " + domain + "…");
 
+        String domain = args[0];
         Client client = new Client("localhost", 6052);
+
         try {
             String ip = client.resolve(domain);
             // send output to stderr if resolution failed
