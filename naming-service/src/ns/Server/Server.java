@@ -28,6 +28,7 @@ public class Server extends ServerSocket {
             System.err.println("Could not create server: " + e.getMessage());
             return;
         }
+        System.out.println("Server running on " + port);
         while (true) {
             Socket sock;
             try {
