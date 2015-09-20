@@ -10,12 +10,29 @@ class Worker implements Runnable
 {
     private int sleepTime = 10;
 
+    /**
+     * Socket connection (oh really?)
+     */
     private Socket connection;
+    /**
+     * Function to call after the socket connection is closed.
+     */
+    private Disposer disposer;
 
-    public Worker(Socket connection) {
+    /**
+     * Create a socket handler.
+     *
+     * @param connection The socket connection to handle.
+     * @param disposer Function to call when the socket connection closes.
+     */
+    public Worker(Socket connection, Disposer disposer) {
         this.connection = connection;
+        this.disposer = disposer;
     }
 
+    /**
+     * Handle a connection, i.e. wait for 10 seconds and close.
+     */
     public void run() {
         try {
             PrintWriter pout = new PrintWriter(connection.getOutputStream(), true);
@@ -35,6 +52,9 @@ class Worker implements Runnable
         }
         catch (IOException e) {
             System.err.println("IOException: " + e.getMessage());
+        }
+        finally {
+            this.disposer.dispose();
         }
     }
 }
