@@ -10,10 +10,12 @@ all: build
 
 # Building source
 build-server:
+	mkdir -p bin
 	javac -d bin -sourcepath src src/ns/Server/Server.java
 
 # Building source
 build-client:
+	mkdir -p bin
 	javac -d bin -sourcepath src src/ns/Client/Client.java
 
 build: build-server build-client
