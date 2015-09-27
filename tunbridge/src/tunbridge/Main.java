@@ -12,6 +12,7 @@ public class Main {
         Random r = new Random();
 
         System.out.println("Running with " + FARMERS + " farmers...");
+        // Enter a bunch of farmers from different directions.
         for (int i = 0; i < FARMERS; i++) {
             Farmer farmer;
             if (r.nextBoolean()) {

@@ -18,6 +18,7 @@ public class Farmer implements Runnable {
         try {
             bridge.enter();
             System.out.println("[" + this.name + "] Entering bridge...");
+            // Crossing bridge...some farmers are fast, others are slow :P
             Thread.sleep(1000 + random.nextInt(9000));
             System.out.println("[" + this.name + "] Leaving bridge...");
         } catch (InterruptedException e) {
