@@ -14,7 +14,7 @@ public class Bridge {
         this.lock.acquire();
     }
 
-    public void leave() throws InterruptedException {
+    public void leave() {
         this.lock.release();
     }
 }

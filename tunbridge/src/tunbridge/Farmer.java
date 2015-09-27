@@ -6,26 +6,28 @@ import java.util.Random;
 public class Farmer implements Runnable {
     private Bridge bridge;
     private Random random;
+    protected String name;
 
     public Farmer(Bridge b) {
         this.bridge = b;
         this.random = new Random();
     }
 
-    public void crossBridge(Bridge bridge) throws InterruptedException {
-        System.out.println("Waiting to enter bridge...");
-        bridge.enter();
-        System.out.println("Entering bridge...");
-        Thread.sleep(1000 + random.nextInt(9000));
-        bridge.leave();
-        System.out.println("Left bridge!");
+    public void crossBridge(Bridge bridge) {
+        System.out.println("[" + this.name + "] Waiting to enter bridge...");
+        try {
+            bridge.enter();
+            System.out.println("[" + this.name + "] Entering bridge...");
+            Thread.sleep(1000 + random.nextInt(9000));
+            System.out.println("[" + this.name + "] Leaving bridge...");
+        } catch (InterruptedException e) {
+            System.out.println("...Interrupted!");
+        } finally {
+            bridge.leave();
+        }
     }
 
     public void run() {
-        try {
-            this.crossBridge(this.bridge);
-        } catch (InterruptedException e) {
-            System.out.println("...Interrupted!");
-        }
+        this.crossBridge(this.bridge);
     }
 }
