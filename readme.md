@@ -7,6 +7,8 @@ I guess!
 ## Exercises
 
 1. [Naming Service](./naming-service)
+2. [Limiting Concurrency](./limit-concurrent-connections)
+3. [Tunbridge](./tunbridge)
 
 ## License
 
